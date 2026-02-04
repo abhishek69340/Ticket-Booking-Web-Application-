@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h3 {
+            color: green;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+<a th:href="@{/displayTicket}"
+   style="display:inline-block; padding:8px 12px; background:#28a745; color:white; text-decoration:none; border-radius:4px;">
+   Display Ticket
+</a>
+    
+    <form th:action="@{/book}" method="post">
+
+        <input type="text" name="name" placeholder="Passenger Name" required />
+
+        <input type="text" name="fromS" placeholder="From Station" required />
+
+        <input type="text" name="toS" placeholder="To Station" required />
+
+        <input type="date" name="journeyDate" required />
+
+        <input type="number" name="trainNum" placeholder="Train Number" required />
+
+        <button type="submit">Book Ticket</button>
+    </form>
+
+ 
+    <h3 th:if="${ticketId != null}">
+        Ticket Booked Successfully! <br/>
+        Ticket ID: <span th:text="${ticketId}"></span>
+    </h3>
+</div>
+
+</body>
+</html>
